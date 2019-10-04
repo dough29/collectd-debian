@@ -16,6 +16,7 @@ docker run -d -it --privileged \
   -v /var/lib/docker/volumes/collectd-config/_data/collectd.conf:/etc/collectd/collectd.conf \
   --restart unless-stopped \
   gregewing/collectd
+
 </code>
 
 For the 'df' plugin to provide data on mounts and RAID volumes on the host, you may need to add a read-only bind mount to this container.
