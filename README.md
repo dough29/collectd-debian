@@ -8,13 +8,21 @@ The container comes pre-configured to push metrics gathered to a graphite instan
 
 Make whatever other configuration changes are necessary in <code>/etc/collectd/collectd.conf</code> to meet your requirements.
 
-Create a container using this image with :
+First, create a volume for the collectd.conf file to go in with :
+
+<code>
+docker volume create collectd-config
+</code><br>
+
+Put your collectd.conf file in this volume in the _data folder, if you have one, if not, there's a configured sample in the image that will be used by default.
+
+Next, start the container with:
 
 <code>
 docker run -d -it --privileged \<br>
   --name=collectd \<br>
   -e TZ=Europe/London \<br>
-  -v /var/lib/docker/volumes/collectd-config/_data/:/config \<br>
+  -v collectd-config:/config \<br>
   -v /var/lib/docker/volumes/collectd-config/_data/collectd.conf:/etc/collectd/collectd.conf \<br>
   --restart unless-stopped \<br>
   gregewing/collectd
