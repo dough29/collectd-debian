@@ -19,12 +19,12 @@ Put your collectd.conf file in this volume in the _data folder, if you have one,
 Next, start the container with:
 
 <code>
-docker run -d -it --privileged \<br>
-  --name=collectd \<br>
-  -e TZ=Europe/London \<br>
-  -v collectd-config:/config \<br>
-  -v /var/lib/docker/volumes/collectd-config/_data/collectd.conf:/etc/collectd/collectd.conf \<br>
-  --restart unless-stopped \<br>
+docker run -d -it --privileged 
+  --name=collectd 
+  -e TZ=Europe/London 
+  -v collectd-config:/config 
+  -v /var/lib/docker/volumes/collectd-config/_data/collectd.conf:/etc/collectd/collectd.conf 
+  --restart unless-stopped 
   gregewing/collectd
 </code>
 <br>
