@@ -15,3 +15,12 @@ docker run -d -it --privileged\
   -e TZ=Europe/Paris\
   -v /path/to/collectd.conf:/etc/collectd/collectd.conf\
   --restart unless-stopped dough29/collectd-debian
+
+## Collecting from Synology NAS
+
+docker run -d -it --privileged\
+  --network host\
+  --name=collectd\
+  -e TZ=Europe/Paris\
+  -v /path/to/collectd.conf:/etc/collectd/collectd.conf\
+  --restart unless-stopped dough29/collectd-debian
