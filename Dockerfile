@@ -1,6 +1,7 @@
-FROM ubuntu
-RUN apt-get update &&\
-    apt-get -y install --no-install-recommends smartmontools collectd* libatasmart* libudev* lm-sensors &&\
-    rm -rif /var/lib/apt/lists/*
-COPY collectd.conf /etc/collectd/collectd.conf
+FROM debian:buster
+ENV     DEBIAN_FRONTEND noninteractive
+RUN apt update \
+    && apt -y install --no-install-recommends smartmontools collectd* libatasmart* libudev* lm-sensors\
+    && apt clean\
+    && rm -rf /var/lib/apt/lists/*
 CMD ["collectd", "-f"]
